@@ -1,29 +1,18 @@
 import java.util.Scanner;
-
-public class fibonacci {
-    public static void printFibonacci(int n) {
-        if (n <= 0) return;
-        
-        int a = 0, b = 1;
-        
-        System.out.print(a);
-        if (n > 1) System.out.print(" " + b);
-        
-        for (int i = 2; i < n; i++) {
-            int next = a + b;
-            System.out.print(" " + next);
-            a = b;
-            b = next;
+public class Question3{
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+        return n;
         }
-        System.out.println();
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter n: ");
-        int n = scanner.nextInt();
-        scanner.close();
-        
-        printFibonacci(n);
+        System.out.print("n= ");
+        Scanner sc=new Scanner(System.in);
+        int terms=sc.nextInt();
+     for (int i = 0; i < terms; i++) {
+            System.out.print(fibonacci(i) + " ");
+        }
     }
 }
