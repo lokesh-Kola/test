@@ -13,7 +13,7 @@ abstract class BankAccount implements Transaction {
     
     public void deposit(double amount) {
         balance += amount;
-        System.out.println("Deposited: ₹" + amount + ", New balance: ₹" + balance);
+        System.out.println("Deposited: " + amount + ", New balance: " + balance);
     }
     
     public abstract boolean withdraw(double amount);
@@ -21,7 +21,7 @@ abstract class BankAccount implements Transaction {
     public void transfer(BankAccount toAccount, double amount) {
         if (withdraw(amount)) {
             toAccount.deposit(amount);
-            System.out.println("Transferred ₹" + amount + " to " + toAccount.accountNumber);
+            System.out.println("Transferred " + amount + " to " + toAccount.accountNumber);
         } else {
             System.out.println("Transfer failed! Insufficient funds or overdraft limit exceeded.");
         }
@@ -36,10 +36,10 @@ class SavingsAccount extends BankAccount {
     public boolean withdraw(double amount) {
         if (balance - amount >= 500) {
             balance -= amount;
-            System.out.println("Withdrawn: ₹" + amount + ", New balance: ₹" + balance);
+            System.out.println("Withdrawn: " + amount + ", New balance: " + balance);
             return true;
         }
-        System.out.println("Withdrawal failed! Minimum ₹500 balance required.");
+        System.out.println("Withdrawal failed! Minimum 500 balance required.");
         return false;
     }
 }
@@ -54,7 +54,7 @@ class CurrentAccount extends BankAccount {
     public boolean withdraw(double amount) {
         if (balance - amount >= -OVERDRAFT_LIMIT) {
             balance -= amount;
-            System.out.println("Withdrawn: ₹" + amount + ", New balance: ₹" + balance);
+            System.out.println("Withdrawn: " + amount + ", New balance: " + balance);
             return true;
         }
         System.out.println("Withdrawal failed! Overdraft limit exceeded.");
